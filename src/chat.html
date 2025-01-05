@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Analytics Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-10 h-10 rounded-xl bg-blue-500 flex items-center justify-center">
+                    <i class="fas fa-robot text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg">Analytics AI</h1>
+                    <p class="text-blue-400 text-sm">v1.0</p>
+                </div>
+            </div>
+
+            <nav class="space-y-2 mb-8">
+                
+                <div class="p-4 rounded-lg bg-gray-800/50 border border-gray-700/50">
+                    <h3 class="text-sm font-semibold text-gray-400 mb-2">About</h3>
+                    <p class="text-sm text-gray-500">
+                        I can help you analyze data and provide insights. Just ask me anything!
+                    </p>
+                </div>
+                <div class="p-4 rounded-lg bg-gray-800/50 border border-gray-700/50">
+                    <h3 class="text-sm font-semibold text-gray-400 mb-2">Tips</h3>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• Ask about performance metrics</li>
+                        <li>• Compare different periods</li>
+                        <li>• Request specific insights</li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="border-t border-gray-700/50 pt-4 mt-auto">
+                <div class="status-badge inline-flex">
+                    <i class="fas fa-circle"></i>
+                    <span>System Online</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add loading indicator div -->
+        <div id="typing-indicator" class="typing-animation hidden">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h2 class="text-xl font-semibold">Social Media Analytics Powered by Langflow x Datastax</h2>
+                        <p class="text-gray-400">Interactive Analysis Session</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fas fa-cog text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="chat-container">
+                <div id="chat-messages" class="chat-messages">
+                    <!-- Messages will be inserted here -->
+                </div>
+
+                <div class="input-container">
+                    <form id="message-form" class="input-wrapper">
+                        <input type="text" 
+                               id="message-input" 
+                               placeholder="Ask about your analytics..."
+                               class="flex-1">
+                        <button type="submit" class="send-button">
+                            <span>Send</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Keep the original working JavaScript -->
+    <script>
+        const messageForm = document.getElementById('message-form');
+        const messageInput = document.getElementById('message-input');
+        const chatMessages = document.getElementById('chat-messages');
+        const typingIndicator = document.getElementById('typing-indicator');
+
+        function appendMessage(sender, message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+            
+            if (isUser) {
+                messageDiv.textContent = message;
+            } else {
+                // Format the bot's message with proper markdown
+                const formattedMessage = message
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .split('\n\n')
+                    .map(para => `<p>${para}</p>`)
+                    .join('');
+                
+                messageDiv.innerHTML = formattedMessage;
+                
+                // Try to extract data and create visualizations
+                if (message.includes('Average') || message.includes('Total')) {
+                    const charts = createChartsFromMessage(message);
+                    charts.forEach(chart => {
+                        const chartContainer = document.createElement('div');
+                        chartContainer.className = 'chart-container';
+                        const canvas = document.createElement('canvas');
+                        chartContainer.appendChild(canvas);
+                        messageDiv.appendChild(chartContainer);
+                        
+                        new Chart(canvas, chart);
+                    });
+                }
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function createChartsFromMessage(message) {
+            const charts = [];
+            
+            // Extract overall metrics
+            const engagementMetrics = {
+                'Likes': extractNumber(message, 'Average Likes.*?([0-9]+)'),
+                'Shares': extractNumber(message, 'Average Shares.*?([0-9]+)'),
+                'Comments': extractNumber(message, 'Average Comments.*?([0-9]+)'),
+                'Views': extractNumber(message, 'Average Views.*?([0-9]+)'),
+                'Saves': extractNumber(message, 'Average Saves.*?([0-9]+)')
+            };
+            
+            // Original bar chart
+            if (Object.values(engagementMetrics).some(v => v !== null)) {
+                charts.push({
+                    type: 'bar',
+                    data: {
+                        labels: Object.keys(engagementMetrics).filter(k => engagementMetrics[k] !== null),
+                        datasets: [{
+                            label: 'Average Engagement Metrics',
+                            data: Object.values(engagementMetrics).filter(v => v !== null),
+                            backgroundColor: [
+                                'rgba(99, 102, 241, 0.5)',
+                                'rgba(168, 85, 247, 0.5)',
+                                'rgba(236, 72, 153, 0.5)',
+                                'rgba(244, 63, 94, 0.5)',
+                                'rgba(139, 92, 246, 0.5)'
+                            ],
+                            borderColor: [
+                                'rgb(99, 102, 241)',
+                                'rgb(168, 85, 247)',
+                                'rgb(236, 72, 153)',
+                                'rgb(244, 63, 94)',
+                                'rgb(139, 92, 246)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: 'Average Engagement Metrics',
+                                color: 'rgb(226, 232, 240)',
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: 'rgba(226, 232, 240, 0.1)'
+                                },
+                                ticks: {
+                                    color: 'rgb(226, 232, 240)'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    color: 'rgba(226, 232, 240, 0.1)'
+                                },
+                                ticks: {
+                                    color: 'rgb(226, 232, 240)'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            return charts;
+        }
+        
+        function extractNumber(text, pattern) {
+            console.log(`Trying to extract pattern: ${pattern}`);
+            const match = text.match(new RegExp(pattern, 'i'));
+            console.log(`Match result:`, match);
+            return match ? parseInt(match[1]) : null;
+        }
+
+        function showTypingIndicator() {
+            const indicator = document.createElement('div');
+            indicator.className = 'typing-animation';
+            indicator.innerHTML = `
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            `;
+            chatMessages.appendChild(indicator);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const indicators = chatMessages.getElementsByClassName('typing-animation');
+            for (let indicator of indicators) {
+                indicator.remove();
+            }
+        }
+
+        messageForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const message = messageInput.value.trim();
+            if (!message) return;
+
+            appendMessage('You', message, true);
+            messageInput.value = '';
+            showTypingIndicator();
+
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message })
+                });
+
+                const data = await response.json();
+                hideTypingIndicator();
+                
+                if (data.error) {
+                    appendMessage('Bot', `Error: ${data.error}`);
+                } else {
+                    const botMessage = data.outputs?.[0]?.outputs?.[0]?.artifacts?.message || 
+                                     'No response found';
+                    appendMessage('Bot', botMessage);
+                }
+            } catch (error) {
+                hideTypingIndicator();
+                appendMessage('Bot', `Error: ${error.message}`);
+            }
+        });
+
+        function getColor(index) {
+            const colors = [
+                '59, 130, 246',   // Blue
+                '16, 185, 129',   // Green
+                '239, 68, 68',    // Red
+                '217, 119, 6',    // Orange
+                '139, 92, 246'    // Purple
+            ];
+            return colors[index % colors.length];
+        }
+    </script>
+</body>
+</html> 
