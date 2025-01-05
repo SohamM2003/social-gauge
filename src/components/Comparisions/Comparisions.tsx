@@ -135,9 +135,9 @@ export const Comparisons = () => {
         </span>
       </h2>
       <div className="relative z-10">
-        <div className="flex items-center justify-center gap-8 mb-10">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 mb-10 flex-wrap">
           <select
-            className="w-48 px-4 py-3 border-4 border-black rounded-lg shadow-lg bg-white text-black font-bold text-lg font-mono hover:bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300"
+            className="w-52 px-4 py-3 border-4 border-black rounded-lg shadow-lg bg-white text-black font-bold text-lg font-mono hover:bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300"
             value={dropdown1}
             onChange={(e) =>
               handleDropdownChange(e.target.value, setDropdown1, dropdown2)
@@ -156,7 +156,7 @@ export const Comparisons = () => {
             V/S
           </div>
           <select
-            className="w-48 px-4 py-3 border-4 border-black rounded-lg shadow-lg bg-white text-black font-bold text-lg font-mono hover:bg-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-500 transition duration-300"
+            className="w-52 px-4 py-3 border-4 border-black rounded-lg shadow-lg bg-white text-black font-bold text-lg font-mono hover:bg-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-500 transition duration-300"
             value={dropdown2}
             onChange={(e) =>
               handleDropdownChange(e.target.value, setDropdown2, dropdown1)
