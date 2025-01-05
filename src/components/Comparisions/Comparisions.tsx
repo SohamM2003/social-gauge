@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import ApexCharts from "apexcharts";
 import { useFormik } from "formik";
-// import axios from "axios";
+import axios from "axios";
+import { API_BASE_URL } from "..";
 
 export const Comparisons = () => {
   const [dropdown1, setDropdown1] = useState("");
   const [dropdown2, setDropdown2] = useState("");
-  const [responseData, setResponseData] = useState<any>(null); // State to handle API response
+  const [responseData, setResponseData] = useState<any>(null);
   const options = ["Reels", "Static Images", "Carousel"];
 
   console.log(responseData);
@@ -19,27 +20,31 @@ export const Comparisons = () => {
     onSubmit: async (values) => {
       if (values.dropdown1 && values.dropdown2) {
         try {
-          // const response = await axios.post("/api/compare", values);
-          const response: any = {
-            conclusion:
-              "Reels generally have higher engagement metrics compared to Static Images.",
-            avg: {
-              likes: {
-                reel: 3260.75,
-                static_image: 3075.75,
-              },
-              comments: {
-                reel: 265.25,
-                static_image: 451.25,
-              },
-              shares: {
-                reel: 399.75,
-                static_image: 438.75,
-              },
-            },
-          };
+          // const response: any = {
+          //   conclusion:
+          //     "Reels generally have higher engagement metrics compared to Static Images.",
+          //   avg: {
+          //     likes: {
+          //       reel: 3260.75,
+          //       static_image: 3075.75,
+          //     },
+          //     comments: {
+          //       reel: 265.25,
+          //       static_image: 451.25,
+          //     },
+          //     shares: {
+          //       reel: 399.75,
+          //       static_image: 438.75,
+          //     },
+          //   },
+          // };
 
-          const avgData = response.avg;
+          const response: any = await axios.post(
+            `${API_BASE_URL}api/typeComp`,
+            values
+          );
+
+          const avgData = response.data.avg;
           const graphKeys = Object.keys(avgData.likes); // Keys like 'reel', 'static_image', etc.
 
           // Extract the averages for the graph
@@ -51,11 +56,11 @@ export const Comparisons = () => {
 
           const object = {
             graphData,
-            conclusion: response.conclusion,
+            conclusion: response.data.conclusion,
           };
 
           setResponseData(object);
-          console.log("API Response:", response);
+          console.log("API Response:", response.data);
         } catch (error) {
           console.error("API Error:", error);
         }

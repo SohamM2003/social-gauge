@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-// import axios from "axios";
-// import { API_BASE_URL } from "..";
+import axios from "axios";
+import { API_BASE_URL } from "..";
 
 export const Engagement: FC = () => {
   const formik = useFormik({
@@ -14,20 +14,12 @@ export const Engagement: FC = () => {
       postType: Yup.string().required("⚠️ Post Type is required!"),
       niche: Yup.string().required("⚠️ Niche is required!"),
     }),
-    onSubmit: async (_values, { setSubmitting, setFieldError, setStatus }) => {
+    onSubmit: async (values, { setSubmitting, setFieldError, setStatus }) => {
       try {
-        // const response = await axios.post(
-        //   `${API_BASE_URL}api/engagement`,
-        //   values
-        // );
-        const response = {
-          data: {
-            data: {
-              status:
-                "Feeling blessed and full of love today! #LoveAlways #RomanticVibes #SoulmateGoals #TrueLove #ForeverTogether #HeartToHeart #UnconditionalLove #CoupleGoals #EndlessLove #InLoveWithYou",
-            },
-          },
-        };
+        const response = await axios.post(
+          `${API_BASE_URL}api/engagement`,
+          values
+        );
         setStatus(response.data.data || "✅ Insights generated successfully!");
       } catch (error: any) {
         setFieldError(
