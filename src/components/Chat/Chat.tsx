@@ -133,9 +133,9 @@
 // };
 
 // export default Chat;
-import axios from "axios";
+// import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { API_BASE_URL } from "..";
+// import { API_BASE_URL } from "..";
 
 export const Chat = () => {
   const [messages, setMessages] = useState<any[]>([]);

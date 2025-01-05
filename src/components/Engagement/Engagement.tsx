@@ -14,7 +14,7 @@ export const Engagement: FC = () => {
       postType: Yup.string().required("⚠️ Post Type is required!"),
       niche: Yup.string().required("⚠️ Niche is required!"),
     }),
-    onSubmit: async (values, { setSubmitting, setFieldError, setStatus }) => {
+    onSubmit: async (_values, { setSubmitting, setFieldError, setStatus }) => {
       try {
         // const response = await axios.post(
         //   `${API_BASE_URL}api/engagement`,
