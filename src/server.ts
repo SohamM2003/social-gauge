@@ -1,5 +1,5 @@
-import { EnvLoader } from './config/envLoader';
-EnvLoader.load();
+// import { EnvLoader } from './config/envLoader';
+// EnvLoader.load();
 
 import app from './app';
 import http from 'http';
