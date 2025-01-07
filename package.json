@@ -11,25 +11,12 @@
   ],
   "scripts": {
     "dev": "npm run build && nodemon dist/server.js",
-    "restart": "pm2 stop social_gaugeApi && npm run start",
-    "start-docker": "pm2-runtime dist/social_gauge.api/src/server.js --name social_gaugeApi  && pm2-runtime logs",
-    "restart-prod": "pm2 stop social_gaugeApi && npm run start-prod",
-    "restart-dev": "pm2 stop social_gaugeApi && npm run start-dev",
     "watch": "npm run tslint && npm run watch-ts",
     "build": "npm run tslint && npm run build-ts",
-    "dev-pm2": "cross-env NODE_ENV=development pm2 start dist/social_gauge.api/src/server.js --name social_gaugeApi && pm2 logs",
-    "prod-pm2": "cross-env NODE_ENV=production pm2 start dist/social_gauge.api/src/server.js --name social_gaugeApi",
-    "test": "./node_modules/.bin/jasmine",
-    "watch-test": "npm run test -- --watchAll",
-    "build-ts": "tsc && npm run copyEnv && npm run copyNotifcation &&npm run copyTemplates && npm run copyTemplatesPDF",
+    "build-ts": "tsc && npm run copyEnv",
     "watch-ts": "tsc -w",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
-    "debug": "npm run build && npm run watch-debug",
-    "copyEnv": "copyfiles ../social_gauge.api/src/environments/.*.env dist/environments --flat",
-    "copyNotifcation": "copyfiles ../social_gauge.modules/fcm/social_gauge-fcm.json dist/social_gauge.modules/fcm --flat",
-    "copyTemplates": "copyfiles --flat ../social_gauge.modules/email/template-processor/templates/*.html dist/social_gauge.modules/email/template-processor/templates",
-    "copyTemplatesPDF": "copyfiles --flat ../social_gauge.modules/pdf/templates/*.html dist/social_gauge.modules/pdf/templates",
-    "copyAngular": "cd ../social_gauge.admin && npm run build && cd ../social_gauge.api && copy-files-from-to"
+    "copyEnv": "copyfiles ./src/environments/.*.env dist/environments --flat"
   },
   "dependencies": {
     "axios": "^1.7.9",

@@ -9,12 +9,12 @@ export class UserRepository {
     console.log('[typeComp] : args', data);
     const flowIdOrName = process.env.TYPECOMP_FLOW_ID_OR_NAME;
     const tweaks = {
-      "ChatOutput-qjlrL": {},
-      "Agent-uiAu0": {},
-      "AstraDB-BlQI1": {},
-      "ParseData-22FW3": {},
-      "Prompt-3NEcO": {},
-      "ChatInput-XoXzz": {}
+      'ChatOutput-qjlrL': {},
+      'Agent-uiAu0': {},
+      'AstraDB-BlQI1': {},
+      'ParseData-22FW3': {},
+      'Prompt-3NEcO': {},
+      'ChatInput-XoXzz': {}
     };
     const result = await axios.post(
       `${langFlowApiBaseUrl}${flowIdOrName}?stream=false`,
@@ -40,15 +40,15 @@ export class UserRepository {
     console.log('[engagement] : args', data);
     const flowIdOrName = process.env.ENGAGEMENT_FLOW_ID_OR_NAME;
     const tweaks = {
-      "ChatInput-MWVG7": {},
-      "ChatOutput-220xf": {},
-      "Agent-hbRDK": {},
-      "Prompt-bxk8G": {},
-      "AstraDB-BshdB": {},
-      "ParseData-W9OWW": {},
-      "File-hfAVo": {},
-      "SplitText-iUAVF": {},
-      "AstraDB-8ZiNO": {}
+      'ChatInput-MWVG7': {},
+      'ChatOutput-220xf': {},
+      'Agent-hbRDK': {},
+      'Prompt-bxk8G': {},
+      'AstraDB-BshdB': {},
+      'ParseData-W9OWW': {},
+      'File-hfAVo': {},
+      'SplitText-iUAVF': {},
+      'AstraDB-8ZiNO': {}
     };
     const result = await axios.post(
       `${langFlowApiBaseUrl}${flowIdOrName}?stream=false`,
