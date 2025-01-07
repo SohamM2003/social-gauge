@@ -10,7 +10,11 @@
     }
   ],
   "scripts": {
-    "dev": "npm run build && nodemon dist/server.js",
+    "start": "npm run build && nodemon dist/server.js",
+    "restart": "pm2 stop social_gaugeApi && npm run start",
+    "start-docker": "pm2-runtime dist/social_gauge.api/src/server.js --name social_gaugeApi  && pm2-runtime logs",
+    "restart-prod": "pm2 stop social_gaugeApi && npm run start-prod",
+    "restart-dev": "pm2 stop social_gaugeApi && npm run start-dev",
     "watch": "npm run tslint && npm run watch-ts",
     "build": "npm run tslint && npm run build-ts",
     "build-ts": "tsc && npm run copyEnv",
