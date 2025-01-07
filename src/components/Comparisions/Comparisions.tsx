@@ -10,8 +10,6 @@ export const Comparisons = () => {
   const [responseData, setResponseData] = useState<any>(null);
   const options = ["Reels", "Static Images", "Carousel"];
 
-  console.log(responseData);
-
   const formik = useFormik({
     initialValues: {
       dropdown1: "",
@@ -60,7 +58,7 @@ export const Comparisons = () => {
           };
 
           setResponseData(object);
-          console.log("API Response:", response.data);
+          // console.log("API Response:", response.data);
         } catch (error) {
           console.error("API Error:", error);
         }

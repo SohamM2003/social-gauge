@@ -65,13 +65,22 @@ export const Header: FC = () => {
             >
               Analysis
             </Link>
-            <Link
-              to="/about"
+            <a
+              href="https://github.com/SohamM2003/social-gauge"
+              target="_BLANK"
               className="text-white font-montserrat text-2xl hover:text-gray-300 transition"
               onClick={toggleMenu}
             >
-              About Us
-            </Link>
+              GitHub Repository
+            </a>
+            <a
+              href="#"
+              target="_BLANK"
+              className="text-white font-montserrat text-2xl hover:text-gray-300 transition"
+              onClick={toggleMenu}
+            >
+              YouTube Video
+            </a>
           </nav>
         </div>
       </div>

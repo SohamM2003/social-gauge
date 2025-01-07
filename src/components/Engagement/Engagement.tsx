@@ -32,8 +32,6 @@ export const Engagement: FC = () => {
     },
   });
 
-  console.log(formik);
-
   return (
     <section className="relative py-16 px-6 lg:px-20">
       <h2 className="text-5xl lg:text-6xl font-bold text-center mb-12 font-manga relative z-10">
@@ -57,10 +55,9 @@ export const Engagement: FC = () => {
           onBlur={formik.handleBlur}
         >
           <option value="">Select Post Type</option>
-          <option value="Image Post">Image Post</option>
-          <option value="Video Post">Video Post</option>
-          <option value="Text Post">Text Post</option>
-          <option value="Reel">Reel</option>
+          <option value="Reels">Reels</option>
+          <option value="Carousel">Carousel</option>
+          <option value="Static Images">Static Images</option>
         </select>
         {formik.touched.postType && formik.errors.postType && (
           <div className="text-red-500 text-sm">{formik.errors.postType}</div>
