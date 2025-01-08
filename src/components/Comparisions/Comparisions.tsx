@@ -42,7 +42,13 @@ export const Comparisons = () => {
             values
           );
 
-          const avgData = response.data.avg;
+          const jsonWithBackticks = response.data.data;
+
+          let cleanJson = jsonWithBackticks.replace(/```/g, "");
+
+          let parsedJson = JSON.parse(cleanJson);
+
+          const avgData = parsedJson.avg;
           const graphKeys = Object.keys(avgData.likes); // Keys like 'reel', 'static_image', etc.
 
           // Extract the averages for the graph
@@ -54,11 +60,10 @@ export const Comparisons = () => {
 
           const object = {
             graphData,
-            conclusion: response.data.conclusion,
+            conclusion: parsedJson.conclusion,
           };
 
           setResponseData(object);
-          // console.log("API Response:", response.data);
         } catch (error) {
           console.error("API Error:", error);
         }

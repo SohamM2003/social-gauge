@@ -96,14 +96,14 @@ export const Engagement: FC = () => {
         {formik.status && (
           <div className="mt-6 p-6 border-4 border-dashed border-gray-400 bg-gray-50 rounded-lg shadow-md text-center text-xl font-medium text-gray-800 w-4/3 mx-auto">
             {/* If the response contains hashtags */}
-            {formik.status.status.includes("#") ? (
+            {formik.status.includes("#") ? (
               <section className="py-6 px-4 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg shadow-xl">
                 <h2 className="text-2xl lg:text-3xl font-bold text-center mb-6 text-purple-700">
                   ✨ Your Hashtags Are Ready! 💖
                 </h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-center">
-                  {formik.status.status
+                  {formik.status
                     .match(/#\w+/g)
                     ?.map((hashtag: any, index: any) => (
                       <div
