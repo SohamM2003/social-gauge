@@ -3,6 +3,7 @@ import ApexCharts from "apexcharts";
 import { useFormik } from "formik";
 import axios from "axios";
 import { API_BASE_URL } from "..";
+import { toast } from "react-toastify";
 
 export const Comparisons = () => {
   const [dropdown1, setDropdown1] = useState("");
@@ -65,6 +66,9 @@ export const Comparisons = () => {
 
           setResponseData(object);
         } catch (error) {
+          toast.warning(
+            "Due to reaching the maximum number of API requests, we are currently unable to process additional data. Please try again later."
+          );
           console.error("API Error:", error);
         }
       }

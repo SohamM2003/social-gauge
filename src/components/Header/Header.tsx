@@ -74,7 +74,7 @@ export const Header: FC = () => {
               GitHub Repository
             </a>
             <a
-              href="#"
+              href="https://www.youtube.com/watch?si=Bc0hTqQDG_mblskf&v=Z10PZcUL9K0&feature=youtu.be"
               target="_BLANK"
               className="text-white font-montserrat text-2xl hover:text-gray-300 transition"
               onClick={toggleMenu}

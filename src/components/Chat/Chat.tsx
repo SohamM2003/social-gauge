@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { API_BASE_URL } from "..";
+import { toast } from "react-toastify";
 
 export const Chat = () => {
   const [messages, setMessages] = useState<any[]>([]);
@@ -19,6 +20,9 @@ export const Chat = () => {
       );
       return response.data.data;
     } catch (error) {
+      toast.warning(
+        "Due to reaching the maximum number of API requests, we are currently unable to process additional data. Please try again later."
+      );
       console.error("Error fetching chatbot response:", error);
       return "Oops! Something went wrong. Please try again.";
     }

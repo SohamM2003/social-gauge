@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { API_BASE_URL } from "..";
+import { toast } from "react-toastify";
 
 export const Engagement: FC = () => {
   const formik = useFormik({
@@ -22,6 +23,9 @@ export const Engagement: FC = () => {
         );
         setStatus(response.data.data || "✅ Insights generated successfully!");
       } catch (error: any) {
+        toast.warning(
+          "Due to reaching the maximum number of API requests, we are currently unable to process additional data. Please try again later."
+        );
         setFieldError(
           "general",
           error.response?.data?.message || "❌ Failed to generate insights!"

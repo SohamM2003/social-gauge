@@ -7,26 +7,18 @@ export const Footer: FC = () => {
 
       <div className="relative z-10">
         <div className="text-center mb-6">
-          <h3 className="text-3xl font-extrabold font-manga mb-4">
-            Stay Connected
+          <h3 className="text-5xl font-extrabold font-mono mb-4">
+            Level Supermind Hackathon - 2025
           </h3>
-          <p className="font-mono text-lg">
+          {/* <p className="font-mono text-lg">
             Follow us on our social media channels and stay updated with our
             latest news.
-          </p>
+          </p> */}
         </div>
 
         <div className="flex justify-center space-x-8">
           <a
-            href="https://www.linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white hover:text-blue-400 transition transform hover:scale-125"
-          >
-            <i className="fab fa-linkedin-in text-3xl"></i>
-          </a>
-          <a
-            href="https://www.github.com"
+            href="https://github.com/SohamM2003/social-gauge"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-gray-400 transition transform hover:scale-125"
@@ -34,12 +26,12 @@ export const Footer: FC = () => {
             <i className="fab fa-github text-3xl"></i>
           </a>
           <a
-            href="https://twitter.com"
+            href="https://www.youtube.com/watch?si=Bc0hTqQDG_mblskf&v=Z10PZcUL9K0&feature=youtu.be"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-blue-400 transition transform hover:scale-125"
           >
-            <i className="fab fa-twitter text-3xl"></i>
+            <i className="fab fa-youtube text-3xl"></i>
           </a>
         </div>
 

@@ -36,9 +36,12 @@ export const HeroSection: FC = () => {
             </Link>
 
             {/* Learn More Button */}
-            <button className="relative px-6 py-3 font-bold text-black bg-white border-4 border-black transition transform hover:scale-105 active:scale-95 shadow-manga">
+            <a
+              href="https://www.youtube.com/watch?si=Bc0hTqQDG_mblskf&v=Z10PZcUL9K0&feature=youtu.be" target="_BLANK"
+              className="relative px-6 py-3 font-bold text-black bg-white border-4 border-black transition transform hover:scale-105 active:scale-95 shadow-manga"
+            >
               Learn More
-            </button>
+            </a>
           </div>
         </div>
 
