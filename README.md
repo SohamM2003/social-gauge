@@ -80,18 +80,19 @@ Langflow's user-friendly design allowed us to seamlessly connect these component
 
 ## 💡 **Our Motivation**
 
-**"Without sleepless nights, we can never achieve dreams!"**  
+**"Without sleepless nights, we can never achieve dreams!"**
 Social Gauge is built to transform complex engagement metrics into meaningful, user-friendly insights that empower users to make informed decisions.
 
 ---
 
 ## 🔗 **Links**
 
-- **Deployed URL:** *(Coming Soon)*
+- **Deployed URL:** [Click here to access the deployed app](https://socialgauge.netlify.app/)
+
 
 ---
 
 ## 🎥 **Demo Video**
 
-[![Watch the Demo](https://img.youtube.com/vi/placeholder/0.jpg)](https://www.youtube.com/watch?v=MlKndTLovag&t=3s)  
+[![Watch the Demo](https://drive.google.com/file/d/1NuxZfvFF7kuC5y_EKTxk9wOuSlJxF-5m/view?usp=sharing)](https://www.youtube.com/watch?si=Bc0hTqQDG_mblskf&v=Z10PZcUL9K0&feature=youtu.be)
 *Click to watch the system in action.*
