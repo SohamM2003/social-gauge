@@ -7,13 +7,13 @@ export const Footer: FC = () => {
 
       <div className="relative z-10">
         <div className="text-center mb-6">
-          <h3 className="text-5xl font-extrabold font-mono mb-4">
-            Level Supermind Hackathon - 2025
+          <h3 className="text-3xl font-extrabold font-manga mb-4">
+            Stay Connected
           </h3>
-          {/* <p className="font-mono text-lg">
+          <p className="font-mono text-lg">
             Follow us on our social media channels and stay updated with our
             latest news.
-          </p> */}
+          </p>
         </div>
 
         <div className="flex justify-center space-x-8">
