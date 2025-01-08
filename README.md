@@ -7,24 +7,28 @@ Social media analytics redefined using Langflow, AstraDB, and ChatGPT integratio
 ## 🛠️ **Tools & Technologies**
 
 ### **Frontend**
+
 - React
 - Tailwind CSS
 - Chart.js
 - Socket.IO
 
 ### **Backend**
+
 - Node.js
 - Express
 - TypeScript
 - Nodemon
 
 ### **AI & Database**
+
 - Langflow
 - AstraDB
 - OpenAI ChatGPT Models
 
 ### **Hosting Services**
-*(TBD)*
+
+_(TBD)_
 
 ---
 
@@ -33,11 +37,14 @@ Social media analytics redefined using Langflow, AstraDB, and ChatGPT integratio
 **Objective:** Social Gauge is a cutting-edge platform that integrates advanced AI with robust data analysis to revolutionize social media engagement strategies. By combining Langflow's intuitive workflows, AstraDB's reliable data storage, and ChatGPT's intelligent insights, the project offers a seamless way to evaluate performance and optimize content creation.
 
 ### **Key Components:**
+
 1. **Simulating Engagement Data:**
+
    - Generate a dataset that includes various metrics like likes, shares, comments, and post types (e.g., carousel, reels, static images).
    - Securely store this dataset in AstraDB for efficient retrieval and analysis.
 
 2. **Performance Metrics Analysis:**
+
    - Develop a workflow in Langflow to analyze social media posts based on type and calculate average engagement metrics.
    - Utilize AstraDB for querying and processing the stored data effectively.
 
@@ -50,9 +57,11 @@ Social media analytics redefined using Langflow, AstraDB, and ChatGPT integratio
 ## ✨ **Key Features**
 
 1. **AI-Powered Analytics**
+
    - Access cutting-edge analytics to optimize social media performance.
 
 2. **Actionable Recommendations**
+
    - Gain practical suggestions to improve engagement metrics.
 
 3. **Enhanced User Experience**
@@ -66,6 +75,7 @@ Social media analytics redefined using Langflow, AstraDB, and ChatGPT integratio
 Langflow provides a visual interface for designing and executing AI workflows, streamlining the integration of AI models and APIs into intuitive systems.
 
 ### **How We Applied Langflow:**
+
 1. Built a flow that accepts post types (carousel, reels, static images) as inputs.
 
 2. Linked the workflow to **AstraDB** for fetching and analyzing engagement data.
@@ -89,10 +99,9 @@ Social Gauge is built to transform complex engagement metrics into meaningful, u
 
 - **Deployed URL:** [Click here to access the deployed app](https://socialgauge.netlify.app/)
 
-
 ---
 
 ## 🎥 **Demo Video**
 
 [![Watch the Demo](https://drive.google.com/file/d/1NuxZfvFF7kuC5y_EKTxk9wOuSlJxF-5m/view?usp=sharing)](https://www.youtube.com/watch?si=Bc0hTqQDG_mblskf&v=Z10PZcUL9K0&feature=youtu.be)
-*Click to watch the system in action.*
+_Click to watch the system in action._
