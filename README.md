@@ -103,5 +103,5 @@ Social Gauge is built to transform complex engagement metrics into meaningful, u
 
 ## 🎥 **Demo Video**
 
-[![Watch the Demo](https://drive.google.com/file/d/1NuxZfvFF7kuC5y_EKTxk9wOuSlJxF-5m/view?usp=sharing)](https://www.youtube.com/watch?si=Bc0hTqQDG_mblskf&v=Z10PZcUL9K0&feature=youtu.be)
+[![Watch the Demo](https://img.youtube.com/vi/Z10PZcUL9K0/0.jpg)](https://www.youtube.com/watch?v=Z10PZcUL9K0) 
 _Click to watch the system in action._
